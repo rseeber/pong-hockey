@@ -1,4 +1,6 @@
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -15,6 +17,8 @@ public class Ball : MonoBehaviour
     // only used once
     public float StartServeAngle { get; set; } = 3 * Mathf.PI / 4;
 
+    // Needs to specified in the Unity Editor
+    public GameObject ballGameObject;
     // the RB node for the ball is here.
     Rigidbody2D ballRB;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -103,6 +107,12 @@ public class Ball : MonoBehaviour
         else if (collision.gameObject.CompareTag("Player2"))
         {
             audioManager.PlaySFX(audioManager.paddleHit2SFX);
+        }
+
+        // 1/20 chance of ball duplication
+        if(Random.Range(0, 20) == 0) {
+            // creates a GameObject 'newBall', which is a duplicate of the object the ballRB is attached to.
+            GameObject newBall = GameObjectUtility.DuplicateGameObject(ballGameObject);
         }
 
         // Increase this bounce count every time we hit a paddle
