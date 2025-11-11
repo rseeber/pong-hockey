@@ -6615,6 +6615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40ced5b965a9f324db689f1e2780942e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  ballGameObject: {fileID: 1864824149}
   rightScored: 0
   leftScored: 0
 --- !u!50 &1864824152
